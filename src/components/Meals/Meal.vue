@@ -1,23 +1,38 @@
 <script setup>
 // import { defineProps } from "vue";
 import Counter from "../UI/Counter.vue"
+import MealDetail from "./MealDetail.vue"
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+console.log("router=======");
+console.log(router);
+
 
 const props = defineProps(["meal"])
 // const meal = props.meal
 
 
 
+function goToDetail(url) {
+    console.log("跳转到detail页面");
+    console.log(url);
+
+    router.push(url);
+
+}
+
 </script>
 
 
 <template>
     <div class="meal">
-        <div class="img">
+        <div class="img" @click="goToDetail('/detail')">
             <img :src="props.meal.img" :alt="props.meal.title">
         </div>
 
-    <div class="info">
-            <div class="desc">
+        <div class="info">
+            <div class="desc" @click="goToDetail">
                 <h2>{{ props.meal.title }}</h2>
                 <p>{{ props.meal.desc }}</p>
             </div>
@@ -26,14 +41,7 @@ const props = defineProps(["meal"])
                 <span class="price">{{ props.meal.price }}</span>
                 <Counter></Counter>
             </div>
-            <!-- {{ meal.title }}
-                                                                                                            {{ meal.desc }}
-                                                                                                            {{ meal.price }} -->
-
         </div>
-
-
-
     </div>
 </template>
 

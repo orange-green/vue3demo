@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Meal from "./Meal.vue"
 import { useMealsStore } from "../../store/meals";
-
+import { MealDetail } from "./MealDetail.vue"
 
 
 const meals = useMealsStore()
+
 
 </script>
 
